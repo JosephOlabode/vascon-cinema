@@ -14,10 +14,10 @@ class Cinema extends Model
     ];
 
     protected $guarded = [
-        'id', 'createdAt', 'updatedAt'
+        'id', 'created_at', 'updated_at'
     ];
 
     protected $hidden = [
-        'createdAt', 'updatedAt'
+        'created_at', 'updated_at'
     ];
 }
