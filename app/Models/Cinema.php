@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Cinema extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name', 'location'
+    ];
+
+    protected $guarded = [
+        'id', 'createdAt', 'updatedAt'
+    ];
+
+    protected $hidden = [
+        'createdAt', 'updatedAt'
+    ];
 }
