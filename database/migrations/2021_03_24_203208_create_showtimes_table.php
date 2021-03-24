@@ -13,7 +13,7 @@ class CreateShowtimesTable extends Migration
      */
     public function up()
     {
-        Schema::create('showtimes', function (Blueprint $table) {
+        Schema::create('showtime', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateShowtimesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('showtimes');
+        Schema::dropIfExists('showtime');
     }
 }
