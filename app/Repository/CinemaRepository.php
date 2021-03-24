@@ -27,23 +27,24 @@ class CinemaRepository implements ICinema
         ]);
     }
 
-    public function getMovieById($id)
+
+    public function getCinemaById($id)
     {
-        // TODO: Implement getMovieById() method.
+        // TODO: Implement getCinemaById() method.
     }
 
-    public function storeMovie($movie)
+    public function storeCinema($cinema)
     {
-        // TODO: Implement storeMovie() method.
+        // TODO: Implement storeCinema() method.
     }
 
-    public function updateMovieById($movie, $id)
+    public function updateCinemaById($cinema, $id)
     {
-        // TODO: Implement updateMovieById() method.
+        // TODO: Implement updateCinemaById() method.
     }
 
-    public function deleteMovieById($id)
+    public function deleteCinemaById($id)
     {
-        // TODO: Implement deleteMovieById() method.
+        // TODO: Implement deleteCinemaById() method.
     }
 }

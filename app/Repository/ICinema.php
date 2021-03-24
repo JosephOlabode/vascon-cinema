@@ -7,8 +7,8 @@ namespace App\Repository;
 Interface ICinema
 {
     public function getAllCinema();
-    public function getMovieById($id);
-    public function storeMovie($movie);
-    public function updateMovieById($movie, $id);
-    public function deleteMovieById($id);
+    public function getCinemaById($id);
+    public function storeCinema($cinema);
+    public function updateCinemaById($cinema, $id);
+    public function deleteCinemaById($id);
 }

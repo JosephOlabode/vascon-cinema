@@ -26,4 +26,24 @@ class MoviesRepository implements IMovies
             'data' => $movies
         ]);
     }
+
+    public function getMovieById($id)
+    {
+        // TODO: Implement getMovieById() method.
+    }
+
+    public function storeMovie($movie)
+    {
+        // TODO: Implement storeMovie() method.
+    }
+
+    public function updateMovieById($movie, $id)
+    {
+        // TODO: Implement updateMovieById() method.
+    }
+
+    public function deleteMovieById($id)
+    {
+        // TODO: Implement deleteMovieById() method.
+    }
 }
