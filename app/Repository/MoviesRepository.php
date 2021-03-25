@@ -11,129 +11,38 @@ class MoviesRepository implements IMovies
 {
     public function getAllMovies()
     {
-        $movies = Movies::all();
-
-        if($movies->count() == 0) {
-            return response()->json([
-                'title' => 'Vas Movies',
-                'message' => 'No movie is available',
-                'data' => []
-            ]);
-        }
-
-        return response()->json([
-            'title'=> 'Vas Movies',
-            'message' => 'Movies are available',
-            'data' => $movies
-        ], 404);
+        return Movies::all();
     }
 
     public function getMovieById($id)
     {
-        $movie = Movies::findOrFail($id);
-        if($movie) {
-            return response()->json([
-                'title' => 'Vas Movies',
-                'message' => 'Movie is available',
-                'data' => $movie
-            ]);
-        }
-
-        return response()->json([
-            'title' => 'Vas Movies',
-            'message' => 'No movie found',
-            'data' => null
-        ]);
+       return Movies::findOrFail($id);
     }
 
-    public function storeMovie($request)
+    public function storeMovie(Movies $movie)
     {
-        $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            'rating' => 'required',
-            'runningTime' => 'required',
-            'website' => 'required',
-            'releaseDate' => 'required',
-            'trailer' => 'required',
-            'dvdRelease' => 'required',
-            'synopsys' => 'required'
-        ]);
-
-        if($validator->fails()) {
-            return response()->json([
-                'title' => 'Vas Movies',
-                'message' => $validator->errors(),
-                'data' => []
-            ], 422);
-        }
-
-        $movie = new Movies();
-        $movie->title = $request->input('title');
-        $movie->rating = $request->input('rating');
-        $movie->running_time = $request->input('runningTime');
-        $movie->website = $request->input('website');
-        $movie->release_date = $request->input('release_date');
-        $movie->trailer = $request->input('trailer');
-        $movie->dvd_release = $request->input('dvdRelease');
-        $movie->synopsys = $request->input('synopsys');
-        $movie->save();
-
-        return response()->json([
-            'title' => 'Vas Movies',
-            'message' => 'Movie stored successfully',
-            'data' => []
-        ]);
+        return $movie->save();
     }
 
-    public function updateMovieById($request, $id)
+    public function updateMovie(Movies $oldMovie, Movies $update)
     {
-        $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            'rating' => 'required',
-            'runningTime' => 'required',
-            'website' => 'required',
-            'releaseDate' => 'required',
-            'trailer' => 'required',
-            'dvdRelease' => 'required',
-            'synopsys' => 'required'
-        ]);
+        $oldMovie->title = $update->title;
+        $oldMovie->rating = $update->rating;
+        $oldMovie->running_time = $update->running_time;
+        $oldMovie->website = $update->website;
+        $oldMovie->release_date = $update->release_date;
+        $oldMovie->trailer = $update->trailer;
+        $oldMovie->dvd_release = $update->dvd_release;
+        $oldMovie->synopsys = $update->synopsys;
 
-        if($validator->fails()) {
-            return response()->json([
-                'title' => 'Vas Movies',
-                'message' => $validator->errors(),
-                'data' => []
-            ], 422);
-        }
-
-        $movie = Movies::findOrFail($id);
-        if($movie == null) {
-            return response()->json([
-                'title' => 'Vas Movies',
-                'message' => 'No movie found',
-                'data' => null
-            ], 404);
-        }
-        $movie->title = $request->input('title');
-        $movie->rating = $request->input('rating');
-        $movie->running_time = $request->input('runningTime');
-        $movie->website = $request->input('website');
-        $movie->release_date = $request->input('release_date');
-        $movie->trailer = $request->input('trailer');
-        $movie->dvd_release = $request->input('dvdRelease');
-        $movie->synopsys = $request->input('synopsys');
-
-        $movie->save();
-        return response()->json([
-            'title' => 'Vas Movies',
-            'message' => 'Movie updated successfully',
-            'data' => []
-        ]);
+        return $oldMovie->save();
     }
 
-    public function deleteMovieById($id)
+    public function deleteMovie(Movies $movie)
     {
-        $movie = Movies::findOrFail($id);
+        return $movie->delete();
+        /*$movie = Movies::findOrFail($id);
+
         if($movie) {
             $movie->delete();
             return response()->json([
@@ -147,6 +56,6 @@ class MoviesRepository implements IMovies
             'title' => 'Vas Movies',
             'message' => 'No movie found',
             'data' => null
-        ], 404);
+        ], 404);*/
     }
 }
