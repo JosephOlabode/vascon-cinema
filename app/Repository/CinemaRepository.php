@@ -25,7 +25,7 @@ class CinemaRepository implements ICinema
             'title' => 'Vas Cinemas',
             'message' => 'No Cinema was gotten',
             'data' => null
-        ]);
+        ], 404);
     }
 
 

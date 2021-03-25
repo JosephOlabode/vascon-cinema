@@ -25,7 +25,7 @@ class MoviesRepository implements IMovies
             'title'=> 'Vas Movies',
             'message' => 'Movies are available',
             'data' => $movies
-        ]);
+        ], 404);
     }
 
     public function getMovieById($id)

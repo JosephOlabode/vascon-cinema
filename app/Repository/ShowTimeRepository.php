@@ -2,33 +2,135 @@
 
 
 namespace App\Repository;
-
+use App\Models\Showtime;
+use Illuminate\Http\Request;
+use Validator;
 
 class ShowTimeRepository implements IShowtime
 {
 
     public function getAllShowTime()
     {
-        // TODO: Implement getAllShowTime() method.
+        $showTime = Showtime::all();
+
+        if($showTime->count() > 0) {
+            return response()->json([
+                'title' => 'Vas Show Time',
+                'message' => 'Show Time are available',
+                'data' => $showTime
+            ]);
+        }
+
+        return response()->json([
+            'title' => 'Vas Show Time',
+            'message' => 'No show time was gotten',
+            'data' => null
+        ], 404);
     }
 
     public function getShowTimeById($id)
     {
-        // TODO: Implement getShowTimeById() method.
+        $showTime = Showtime:: findOrFail($id);
+        if($showTime) {
+            return response()->json([
+                'title' => 'Vas Show Time',
+                'message' => 'Show Time is available',
+                'data' => $showTime
+            ]);
+        }
+        return response()->json([
+            'title' => 'Vas Show Time',
+            'message' => 'No Show Time Found',
+            'data' => null
+        ], 404);
     }
 
-    public function storeShowTime($showTime)
+    public function storeShowTime($request)
     {
-        // TODO: Implement storeShowTime() method.
+        $validator = Validator::make($request->all(), [
+            'date' => 'required',
+            'startTime' => 'required',
+            'endTime' => 'required'
+        ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'title' => 'Vas Show Time',
+                'message' => $validator->errors(),
+                'data' => null
+            ]);
+        }
+
+        $showTime = new Showtime();
+        $showTime->date = $request->input('date');
+        $showTime->start_time = $request->input('startTime');
+        $showTime->end_time = $request->input('endTime');
+
+        $showTime->save();
+
+        return response()->json([
+            'title' => 'Vas Show Time',
+            'message' => 'Show Time Saved Successfully',
+            'data' => []
+        ]);
     }
 
-    public function updateShowTimeById($showTime, $id)
+    public function updateShowTimeById($request, $id)
     {
-        // TODO: Implement updateShowTimeById() method.
+        $validator = Validator::make($request->all(), [
+            'date' => 'required',
+            'startTime' => 'required',
+            'endTime' => 'required'
+        ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'title' => 'Vas Show Time',
+                'message' => $validator->errors(),
+                'data' => null
+            ]);
+        }
+
+        $showTime = Showtime::findOrFail($id);
+        if($showTime) {
+            $showTime->date = $request->input('date');
+            $showTime->start_time = $request->input('startTime');
+            $showTime->end_time = $request->input('endTime');
+
+            $showTime->save();
+
+            return response()->json([
+                'title' => 'Vas Show Time',
+                'message' => 'Show Time updated Successfully',
+                'data' => null
+            ]);
+        }
+
+        return response()->json([
+            'title' => 'Vas Show Time',
+            'message' => 'No show time Found',
+            'data' => null
+        ], 404);
+
     }
 
     public function deleteShowTimeById($id)
     {
-        // TODO: Implement deleteShowTimeById() method.
+        $showTime = Showtime::findOrFail($id);
+
+        if($showTime) {
+            $showTime->delete();
+            return response()->json([
+                'title' => 'Vas Show Time',
+                'message' => 'Show Time deleted successfully',
+                'data' => null
+            ]);
+        }
+
+        return response()->json([
+            'title' => 'Vas Show Time',
+            'message' => 'No Show Time Found',
+            'data' => null
+        ], 404);
     }
 }
