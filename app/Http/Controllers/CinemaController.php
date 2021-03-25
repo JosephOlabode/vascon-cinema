@@ -148,7 +148,7 @@ class CinemaController extends Controller
             $deletedCinema = $this->cinemaRepository->deleteCinema($cinema);
             return response()->json([
                 'title' => 'VAS Cinema',
-                'message' => ($cinema) ? 'Cinema Deleted Successfully': 'Unable to Delete Cinema',
+                'message' => ($deletedCinema) ? 'Cinema Deleted Successfully': 'Unable to Delete Cinema',
                 'data' => $deletedCinema
             ], $deletedCinema ? 200 : 422);
         }
