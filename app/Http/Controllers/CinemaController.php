@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\ICinema;
 use Illuminate\Http\Request;
 
 class CinemaController extends Controller
 {
+    private $cinemaRepository;
+
+    public function __construct(ICinema $cinemaRepository)
+    {
+        $this->$cinemaRepository = $cinemaRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,7 @@ class CinemaController extends Controller
      */
     public function index()
     {
-        //
+        return $this->cinemaRepository->getAllCinema();
     }
 
     /**
@@ -24,7 +31,7 @@ class CinemaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->cinemaRepository->storeCinema($request);
     }
 
     /**
@@ -35,7 +42,7 @@ class CinemaController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->cinemaRepository->getCinemaById($id);
     }
 
     /**
@@ -47,7 +54,7 @@ class CinemaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->cinemaRepository->updateCinemaById($request, $id);
     }
 
     /**
@@ -58,6 +65,6 @@ class CinemaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->cinemaRepository->deleteCinemaById($id);
     }
 }
