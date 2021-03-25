@@ -67,6 +67,17 @@ class MoviesRepository implements IMovies
             ], 422);
         }
 
+        $movie = new Movies();
+        $movie->title = $request->input('title');
+        $movie->rating = $request->input('rating');
+        $movie->running_time = $request->input('runningTime');
+        $movie->website = $request->input('website');
+        $movie->release_date = $request->input('release_date');
+        $movie->trailer = $request->input('trailer');
+        $movie->dvd_release = $request->input('dvdRelease');
+        $movie->synopsys = $request->input('synopsys');
+        $movie->save();
+
         return response()->json([
             'title' => 'Vas Movies',
             'message' => 'Movie stored successfully',
