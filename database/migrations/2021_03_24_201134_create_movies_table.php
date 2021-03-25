@@ -17,7 +17,7 @@ class CreateMoviesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('rating');
-            $table->int('running_time');
+            $table->integer('running_time');
             $table->string('website');
             $table->Date('release_date');
             $table->boolean('trailer');
