@@ -41,21 +41,5 @@ class MoviesRepository implements IMovies
     public function deleteMovie(Movies $movie)
     {
         return $movie->delete();
-        /*$movie = Movies::findOrFail($id);
-
-        if($movie) {
-            $movie->delete();
-            return response()->json([
-                'title' => 'Vas Movies',
-                'message' => 'Movie deleted successfully',
-                'data' => null
-            ]);
-        }
-
-        return response()->json([
-            'title' => 'Vas Movies',
-            'message' => 'No movie found',
-            'data' => null
-        ], 404);*/
     }
 }
