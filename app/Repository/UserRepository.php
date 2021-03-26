@@ -12,144 +12,36 @@ class UserRepository implements IUser
 
     public function getAllUsers()
     {
-        $users = User::all();
-
-        if($users->count() > 0) {
-            return response()->json([
-                'title' => 'Vas Users',
-                'message' => 'Users available',
-                'data' => $users
-            ]);
-        }
-
-        return response()->json([
-            'title' => 'Vas Users',
-            'message' => 'No User record found',
-            'data' => []
-        ]);
+        return User::all();
     }
 
     public function getUserById($id)
     {
-        $user = User::findOrFail($id);
-
-        if($user) {
-            return response()->json([
-                'title' => 'Vas Users',
-                'message' => 'User available',
-                'data' => $user
-            ]);
-        }
-
-        return response()->json([
-            'title' => 'Vas Users',
-            'message' => 'No User Found',
-            'data' => null
-        ]);
+        return User::findOrFail($id);
     }
 
     public function getUserByEmail($email)
     {
-        $user = User::where('email', $email)->first();
-
-        if($user) {
-            return response()->json([
-                'title' => 'Vas Users',
-                'message' => 'User available',
-                'data' => $user
-            ]);
-        }
-
-        return response()->json([
-            'title' => 'Vas Users',
-            'message' => 'No User Found',
-            'data' => null
-        ]);
+       return User::where('email', $email)->first();
     }
 
-    public function storeUser(Request $request)
+    public function storeUser(User $user)
     {
-        $validator = $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-
-        if($validator->fails()) {
-            return response()->json([
-                'title' => 'Vas Users',
-                'message' => $validator->errors(),
-                'data' => []
-            ], 422);
-        }
-
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = $request->input('password');
-
-        $user->save();
-        return response()->json([
-            'title' => 'Vas Users',
-            'message' => 'User saved successfully',
-            'data' => []
-        ]);
+        return $user->save();
     }
 
-    public function updateUser(Request $request, $id)
+    public function updateUser(User $oldUser, User $update)
     {
-        $validator = $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-        ]);
+        $oldUser->name = $update->name;
+        $oldUser->email = $update->email;
+        $oldUser->password = $update->password;
 
-        if($validator->fails()) {
-            return response()->json([
-                'title' => 'Vas Users',
-                'message' => $validator->errors(),
-                'data' => []
-            ], 422);
-        }
-
-        $user = User::findOrFail($id);
-        if($user) {
-            $user->name = $request->input('name');
-            $user->email = $request->input('email');
-            $user->password = $request->input('password');
-
-            $user->save();
-            return response()->json([
-                'title' => 'Vas Users',
-                'message' => 'User updated successfully',
-                'data' => []
-            ]);
-        }
-
-        return response()->json([
-            'title' => 'Vas Users',
-            'message' => 'No User Found',
-            'data' => []
-        ], 404);
+        return $oldUser->save();
 
     }
 
-    public function deleteUser($id)
+    public function deleteUser($user)
     {
-        $user = User::findOrFail($id);
-        if($user) {
-            $user->delete();
-            return response()->json([
-                'title' => 'Vas Users',
-                'message' => 'User deleted successfully',
-                'data' => null
-            ]);
-        }
-
-        return response()->json([
-            'title' => 'Vas Users',
-            'message' => 'No User Found',
-            'data' => null
-        ], 404);
+        return $user->delete();
     }
 }

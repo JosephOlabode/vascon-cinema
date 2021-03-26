@@ -143,7 +143,7 @@ class ShowTimeController extends Controller
      */
     public function destroy($id)
     {
-        // getting cinema by id
+        // getting show time by id
         $showTime = $this->showTimeRepository->getShowTimeById($id);
 
 
