@@ -19,14 +19,6 @@ class CreateShowtimesTable extends Migration
             $table->time('start_time');
             $table->time('end_time');
             $table->timestamps();
-
-            $table->foreign('cinema_id')->references('id')
-                ->on('cinemas')
-                ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->foreign('movie_id')->references('id')
-                ->on('movies')
-                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
