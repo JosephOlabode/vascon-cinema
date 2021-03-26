@@ -20,4 +20,9 @@ class Cinema extends Model
     protected $hidden = [
         'created_at', 'updated_at'
     ];
+
+    public function showTime()
+    {
+        return $this->hasMany(Showtime::class);
+    }
 }

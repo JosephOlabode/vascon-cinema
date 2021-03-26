@@ -19,4 +19,13 @@ class Showtime extends Model
     protected $hidden = [
         'created_at', 'update_at'
     ];
+
+    public function cinema()
+    {
+        return $this->belongsTo(Cinema::class);
+    }
+
+    public function movie() {
+        return $this->belongsTo(Movies::class);
+    }
 }
