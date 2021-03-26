@@ -12,7 +12,8 @@ class UserRepository implements IUser
 
     public function getAllUsers()
     {
-        return User::all();
+        $users = User::all();
+        return $users;
     }
 
     public function getUserById($id)

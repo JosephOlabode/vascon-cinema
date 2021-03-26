@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Repository\IUser;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -10,7 +11,7 @@ class UserController extends Controller
 {
     private $userRepository = null;
 
-    public function __construct(User $userRepository)
+    public function __construct(IUser $userRepository)
     {
         $this->userRepository = $userRepository;
     }
