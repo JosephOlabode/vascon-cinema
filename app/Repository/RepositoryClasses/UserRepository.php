@@ -5,6 +5,7 @@ namespace App\Repository;
 
 
 use App\Models\User;
+use App\Repository\IUser;
 use Illuminate\Http\Request;
 
 class UserRepository implements IUser

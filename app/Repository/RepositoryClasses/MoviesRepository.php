@@ -1,7 +1,8 @@
 <?php
 
 
-namespace App\Repository;
+namespace App\Repository\RepositoryInterface;
+use App\Repository\IMovies;
 use Validator;
 
 use App\Models\Movies;
