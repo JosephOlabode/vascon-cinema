@@ -16,7 +16,7 @@ class CinemaRepository implements ICinema
 
     public function getCinemaById($id)
     {
-       return Cinema::findOrFail($id);
+       return Cinema::find($id);
     }
 
     public function storeCinema($cinema)

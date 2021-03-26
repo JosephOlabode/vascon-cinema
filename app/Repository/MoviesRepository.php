@@ -16,7 +16,7 @@ class MoviesRepository implements IMovies
 
     public function getMovieById($id)
     {
-       return Movies::findOrFail($id);
+       return Movies::find($id);
     }
 
     public function storeMovie(Movies $movie)

@@ -12,13 +12,13 @@ class UserRepository implements IUser
 
     public function getAllUsers()
     {
-        $users = User::all();
-        return $users;
+       return User::all();
+
     }
 
     public function getUserById($id)
     {
-        return User::findOrFail($id);
+        return User::find($id);
     }
 
     public function getUserByEmail($email)

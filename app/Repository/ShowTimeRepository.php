@@ -16,7 +16,7 @@ class ShowTimeRepository implements IShowtime
 
     public function getShowTimeById($id)
     {
-        return Showtime:: findOrFail($id);
+        return Showtime:: find($id);
     }
 
     public function storeShowTime(Showtime $showTime)
@@ -24,28 +24,17 @@ class ShowTimeRepository implements IShowtime
         return $showTime->save();
     }
 
-    public function updateShowTimeById(Showtime $oldShowTime, Showtime $update)
+    public function updateShowTime(Showtime $oldShowTime, Showtime $update)
     {
+        $oldShowTime->date = $update->date;
+        $oldShowTime->start_time = $update->start_time;
+        $oldShowTime->end_time = $update->end_time;
 
+        return $oldShowTime->save();
     }
 
-    public function deleteShowTimeById($id)
+    public function deleteShowTime($showtime)
     {
-        $showTime = Showtime::findOrFail($id);
-
-        if($showTime) {
-            $showTime->delete();
-            return response()->json([
-                'title' => 'Vas Show Time',
-                'message' => 'Show Time deleted successfully',
-                'data' => null
-            ]);
-        }
-
-        return response()->json([
-            'title' => 'Vas Show Time',
-            'message' => 'No Show Time Found',
-            'data' => null
-        ], 404);
+        return $showtime->delete();
     }
 }
