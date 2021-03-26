@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCinemaIdAndMovieIdToShowTime extends Migration
+class AddForeignKeyToShowtimes extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddCinemaIdAndMovieIdToShowTime extends Migration
     public function up()
     {
         Schema::table('showtime', function (Blueprint $table) {
-            $table->bigIncrements('cinema_id');
-            $table->bigIncrements('movie_id');
+            $table->unsignedBigInteger('cinema_id');
+            $table->unsignedBigInteger('movie_id');
 
             $table->foreign('cinema_id')->references('id')
                 ->on('cinemas')
@@ -34,6 +34,13 @@ class AddCinemaIdAndMovieIdToShowTime extends Migration
      */
     public function down()
     {
+        Schema::table('showtime', function (Blueprint $table) {
+            $table->dropForeign('showtime_cinema_id_foreign');
+            $table->dropIndex('showtime_cinema_id_foreign');
+            $table->dropForeign('showtime_movie_id_foreign');
+            $table->dropIndex('showtime_movie_id_foreign');
+        });
+
         Schema::table('showtime', function (Blueprint $table) {
             $table->dropColumn('cinema_id');
             $table->dropColumn('movie_id');
