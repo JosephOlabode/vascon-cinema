@@ -44,7 +44,4 @@ class MoviesRepository implements IMovies
         return $movie->delete();
     }
 
-    public function getListOfMoviesWithShowTimeAndCinemas() {
-        return Movies::with('')->with('')->get();
-    }
 }

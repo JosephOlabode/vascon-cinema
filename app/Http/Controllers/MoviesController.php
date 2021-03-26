@@ -180,8 +180,4 @@ class MoviesController extends Controller
             ], 404);
         }
     }
-
-    public function getListOfMoviesWithShowTimeAndCinemas() {
-        /*Movies::with('showTime')->with('cinema')->get();*/
-    }
 }
