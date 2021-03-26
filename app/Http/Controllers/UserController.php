@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Repository\IUser;
+use App\Repository\RepositoryInterfaces\IUser;
 use Illuminate\Http\Request;
 use Validator;
 

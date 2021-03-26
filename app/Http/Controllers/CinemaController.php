@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cinema;
-use App\Repository\ICinema;
+use App\Repository\RepositoryInterfaces\ICinema;
 use Illuminate\Http\Request;
 use Validator;
 

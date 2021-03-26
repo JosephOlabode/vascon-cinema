@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Showtime;
-use App\Repository\IShowtime;
+use App\Repository\RepositoryInterfaces\IShowtime;
 use Illuminate\Http\Request;
 use Validator;
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movies;
-use App\Repository\IMovies;
+use App\Repository\RepositoryInterfaces\IMovies;
 use Illuminate\Http\Request;
 use Validator;
 

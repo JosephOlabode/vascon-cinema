@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Repository;
+namespace App\Repository\RepositoryClasses;
 
 
 use App\Models\User;
-use App\Repository\IUser;
+use App\Repository\RepositoryInterfaces\IUser;
 use Illuminate\Http\Request;
 
 class UserRepository implements IUser

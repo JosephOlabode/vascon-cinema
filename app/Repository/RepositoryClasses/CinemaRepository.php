@@ -1,10 +1,11 @@
 <?php
 
 
-namespace App\Repository;
+namespace App\Repository\RepositoryClasses;
 
 
 use App\Models\Cinema;
+use App\Repository\RepositoryInterfaces\ICinema;
 
 class CinemaRepository implements ICinema
 {
