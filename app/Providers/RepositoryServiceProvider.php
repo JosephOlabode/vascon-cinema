@@ -2,14 +2,14 @@
 
 namespace App\Providers;
 
-use App\Repository\RepositoryInterfaces\CinemaRepository;
+use App\Repository\RepositoryClasses\CinemaRepository;
+use App\Repository\RepositoryClasses\MoviesRepository;
+use App\Repository\RepositoryClasses\ShowTimeRepository;
+use App\Repository\RepositoryClasses\UserRepository;
 use App\Repository\RepositoryInterfaces\ICinema;
 use App\Repository\RepositoryInterfaces\IMovies;
 use App\Repository\RepositoryInterfaces\IShowtime;
 use App\Repository\RepositoryInterfaces\IUser;
-use App\Repository\RepositoryInterfaces\MoviesRepository;
-use App\Repository\RepositoryInterfaces\ShowTimeRepository;
-use App\Repository\RepositoryInterfaces\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider

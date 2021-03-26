@@ -2,8 +2,6 @@
 
 
 namespace App\Repository\RepositoryClasses;
-
-
 use App\Models\User;
 use App\Repository\RepositoryInterfaces\IUser;
 use Illuminate\Http\Request;
