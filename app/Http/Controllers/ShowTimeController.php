@@ -14,7 +14,7 @@ class ShowTimeController extends Controller
 
     public function __construct(IShowtime $showTimeRepository)
     {
-        $this->$showTimeRepository = $showTimeRepository;
+        $this->showTimeRepository = $showTimeRepository;
     }
 
     /**

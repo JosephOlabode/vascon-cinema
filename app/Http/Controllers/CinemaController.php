@@ -13,7 +13,7 @@ class CinemaController extends Controller
 
     public function __construct(ICinema $cinemaRepository)
     {
-        $this->$cinemaRepository = $cinemaRepository;
+        $this->cinemaRepository = $cinemaRepository;
     }
     /**
      * Display a listing of the resource.
