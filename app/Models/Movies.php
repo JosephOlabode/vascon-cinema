@@ -21,8 +21,17 @@ class Movies extends Model
         'created_at', 'updated_at'
     ];
 
-    public function showTime() {
+    /*public function showTime() {
         return $this->hasMany(Showtime::class);
+    }*/
+
+    public function showTime() {
+        return $this->belongsToMany(
+            Showtime::class,
+            'showtime',
+            'cinema_id',
+            'movie_id'
+        )->withPivot(['date', 'start_time', 'end_time'])->withTimestamps();
     }
 
 }
